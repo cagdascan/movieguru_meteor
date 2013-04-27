@@ -15,21 +15,19 @@ if (Meteor.isClient) {
 		return Genres.find({}).fetch();
 	};
 	
-	Template.main.events({
+	Template.genre.events({
 		'click div.genre' : function () {
 			Session.set("genre", this._id);
-			//var keyword = Movies.findOne({genres:Session.get("genre")});
-			//console.log(keyword);
 			var genre = Genres.findOne({_id:Session.get("genre")});
 			var keyword = genre.genre;
-			console.log(keyword);
-			Template.keyword.element("Action");
+			Session.set("keyword", keyword);
 		}
 	});
 
-	Template.keyword.element= function (keyword) {
-		return Movies.find({genres:keyword}).fetch();
+	Template.keyword.item= function () {
+		return Movies.find({genres:Session.get("keyword")}).fetch();
 	};
+
 
 
 }

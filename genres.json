@@ -1,0 +1,30 @@
+MongoDB shell version: 2.4.1
+connecting to: 127.0.0.1:3002/meteor
+[
+	"Drama",
+	"History",
+	"Romance",
+	"Horror",
+	"Comedy",
+	"Family",
+	"Thriller",
+	"Fantasy",
+	"Adventure",
+	"Action",
+	"Sci-Fi",
+	"Crime",
+	"Biography",
+	"Documentary",
+	"War",
+	"Musical",
+	"Music",
+	"Film-Noir",
+	"Sport",
+	"Mystery",
+	"Animation",
+	"Western",
+	"Short",
+	"Adult"
+]
+Sat Apr 27 13:47:00.157 file [-] doesn't exist
+failed to load: -

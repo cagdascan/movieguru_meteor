@@ -8,22 +8,22 @@
 
 <template name="main">
 	<div class="container">
-		<div class="row">
+		<div class="row" id="header">
 			{{> header}}
 		</div>
 		<div class="row">
 			<div class="span2">
-				<div class="row">
+				<div class="row" id="genres">
 					{{> genres}}
 				</div>
 				<div class="row">
 					{{> keywords}}
 				</div>
 			</div>
-			<div class="span6">
+			<div class="span6 offset1">
 				{{> movies}}
 			</div>
-			<div class="span3">
+			<div class="span2 offset1">
 				{{> lists}}
 			</div>
 		</div>
@@ -38,18 +38,20 @@
 </template>
 
 <template name="genres">
-	<h5>Genres</h5>
+	<h4>Genres</h4>
 	<hr>
 	{{> genre}}
 </template>
 
 <template name="genre">
 	{{#each element}}
-		<h6>{{genre}}</h6>
+		{{genre}}
 	{{/each}}
 </template>
 
 <template name="keywords">
+  <h4>Keywords</h4>
+	<hr>
 	{{> keyword}}
 </template>
 
@@ -58,6 +60,8 @@
 </template>
 
 <template name="movies">
+  <h4>Movies</h4>
+	<hr>
 	{{> movie}}
 </template>
 
@@ -66,10 +70,14 @@
 </template>
 
 <template name="lists">
-	<div class="row">
+	<div class="row" id="watch_list">
+		<h4>Watch List</h4>
+		<hr>
 		{{> watch_list}}
 	</div>
-	<div class="row">
+	<div class="row" id="watched_list">
+		<h4>Watched List</h4>
+		<hr>
 		{{> watched_list}}
 	</div>
 </template>

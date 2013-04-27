@@ -13,7 +13,6 @@ if (Meteor.isClient) {
 
 	Template.genre.element= function () {
 		return Genres.find({}).fetch();
-		
 	};
 }
 

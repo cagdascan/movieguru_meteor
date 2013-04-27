@@ -45,7 +45,9 @@
 
 <template name="genre">
 	{{#each element}}
+		<div style="float:left;" class="genre">
 		{{genre}}
+		</div>
 	{{/each}}
 </template>
 
@@ -56,7 +58,9 @@
 </template>
 
 <template name="keyword">
-	helicopter vs.
+	{{#each element}}
+		{{keywords}}
+	{{/each}}
 </template>
 
 <template name="movies">

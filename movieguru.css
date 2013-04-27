@@ -1,6 +1,7 @@
 /* CSS declarations go here */
 #header{
 	margin-bottom:30px;
+	margin-top:20px;
 }
 .footer{
 	margin-top:100px;
@@ -10,8 +11,13 @@
 }
 .genre{
 	margin-right:5px;
+	margin-bottom:5px;
 }
 #watch_list{
 	margin-bottom:50px;
+}
+
+.selected{
+	color:red;
 }
 

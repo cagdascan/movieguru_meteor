@@ -34,19 +34,22 @@
 </template>
 
 <template name="header">
-	<h1>Movie Guru</h1>
+	<h1 class="span10">Movie Guru</h1>
+	{{loginButtons}}
 </template>
 
 <template name="genres">
-	<h4>Genres</h4>
+	<h4><a href="#" id="genre_header" data-toogle="tooltip" data-title="Select one or more genres" data-placement="right">Genres</a></h4>
 	<hr>
 	{{> genre}}
 </template>
 
 <template name="genre">
 	{{#each element}}
-		<div style="float:left;" class="genre">
+		<div class="genre">
+		<span style="float:left;" class="label genre {{selected}}">
 		{{genre}}
+		</span>
 		</div>
 	{{/each}}
 </template>
@@ -59,7 +62,11 @@
 
 <template name="keyword">
 	{{#each item}}
+		<div sytle="float:left;" class="keyword">
+		<span sytle="float:left;" class="label">
 		{{keywords}}
+		</span>
+		</div>
 	{{/each}}
 </template>
 
@@ -70,7 +77,11 @@
 </template>
 
 <template name="movie">
-	matrix
+	{{#each item}}
+		<a  href="#">
+			<img src="{{pLink}}" class="img-polaroid"  style="width:96px; height:96px;">
+		</a>
+	{{/each}}
 </template>
 
 <template name="lists">

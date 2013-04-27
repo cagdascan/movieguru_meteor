@@ -3,33 +3,37 @@ Genres = new Meteor.Collection("genres");
 
 if (Meteor.isClient) {
 
-  Template.main.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+	Template.genres.events({
+		'mouseenter #genre_header' : function () {
+			$('#genre_header').tooltip('show');
+		}
+	});
 
 	Template.genre.element= function () {
 		return Genres.find({}).fetch();
+	};
+
+	Template.genre.selected = function () {
+		return Session.equals("genre", this._id) ? "label-success" : '';
 	};
 	
 	Template.genre.events({
 		'click div.genre' : function () {
 			Session.set("genre", this._id);
-			var genre = Genres.findOne({_id:Session.get("genre")});
-			var keyword = genre.genre;
-			Session.set("keyword", keyword);
+			var array = Genres.findOne({_id:Session.get("genre")});
+			var genres= array.genre;
+			Session.set("genres", genres);
 		}
 	});
 
 	Template.keyword.item= function () {
-		return Movies.find({genres:Session.get("keyword")}).fetch();
+		 var array = Movies.find({genres:Session.get("genres")}, {keywords:1, _id:0}, {limit:15}).fetch();
+		 return _.flatten(array) && array;
+	 };
+	
+	Template.movie.item = function () {
+		return Movies.find({genres:Session.get("genres")}, {limit:15}).fetch();
 	};
-
-
-
 }
 
 if (Meteor.isServer) {

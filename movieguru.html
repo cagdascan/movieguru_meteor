@@ -47,7 +47,7 @@
 <template name="genre">
 	{{#each element}}
 		<div class="genre">
-		<span style="float:left;" class="label genre {{selected}}">
+		<span style="float:left;" class="label genre {{selected}} {{hovered}}" id="{{_id}}">
 		{{genre}}
 		</span>
 		</div>
@@ -104,8 +104,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-success">Add to Watch List</button>
-				<button class="btn btn-primary">Add to Watched List</button>
+				<button class="btn btn-success watch_list" data-dismiss="modal" id="{{_id}}">Add to Watch List</button>
+				<button class="btn btn-primary watched_list" data-dismiss="modal" id="{{_id}}">Add to Watched List</button>
 			</div>
 		</div>
 	{{/each}}
@@ -125,11 +125,15 @@
 </template>
 
 <template name="watch_list">
-	list 1
+	{{#each list}}
+		{{watchlist}}
+	{{/each}}
 </template>
 
 <template name="watched_list">
-	list 2
+	{{#each list}}
+		{{watchedlist}}
+	{{/each}}
 </template>
 
 <template name="footer">

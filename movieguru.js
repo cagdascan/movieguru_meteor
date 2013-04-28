@@ -1,5 +1,6 @@
 Movies = new Meteor.Collection("movies");
 Genres = new Meteor.Collection("genres");
+Lists = new Meteor.Collection("lists");
 
 if (Meteor.isClient) {
 
@@ -16,6 +17,10 @@ if (Meteor.isClient) {
 	Template.genre.selected = function () {
 		return Session.equals("genre", this._id) ? "label-success" : '';
 	};
+
+	Template.genre.hovered = function () {
+		return Session.equals("hover", this._id) ? "label-warning" : '';
+	}
 	
 	Template.genre.events({
 		'click div.genre' : function () {
@@ -23,6 +28,12 @@ if (Meteor.isClient) {
 			var array = Genres.findOne({_id:Session.get("genre")});
 			var genres= array.genre;
 			Session.set("genres", genres);
+		},
+		'mouseenter div.genre' :function () {
+			Session.set("hover", this._id);
+		},
+		'mouseleave div.genre' :function () {
+			$('.label-warning').removeClass('label-warning');
 		}
 	});
 
@@ -33,6 +44,24 @@ if (Meteor.isClient) {
 	
 	Template.movie.item = function () {
 		return Movies.find({genres:Session.get("genres")}, {limit:15}).fetch();
+	};
+
+	Template.movie.events({
+		'click button.watch_list' : function () {
+			Session.set("list", this._id);
+			Lists.insert({"user":Meteor.userId(), "watchlist":Session.get("list")});
+		},
+		'click button.watched_list' : function () {
+			Session.set("list", this._id);
+			Lists.insert({"user":Meteor.userId(), "watchedlist":Session.get("list")});
+		}
+	});
+
+	Template.watch_list.list= function () {
+		return Lists.find({user:Meteor.userId()}).fetch();
+	};
+	Template.watched_list.list= function () {
+		return Lists.find({user:Meteor.userId()}).fetch();
 	};
 }
 

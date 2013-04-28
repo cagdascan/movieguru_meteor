@@ -78,9 +78,36 @@
 
 <template name="movie">
 	{{#each item}}
-		<a  href="#">
+		<a href="#myModal{{_id}}" data-toggle="modal" class="movie_item">
 			<img src="{{pLink}}" class="img-polaroid"  style="width:96px; height:96px;">
 		</a>
+		<div id="myModal{{_id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">{{name}}</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row span5">
+					<img src="{{pLink}}" class="img-rounded span2" style="margin-left:auto; margin-right:auto; margin-bottom:20px;">
+					<div class="span3">
+						<p><strong>Title:&nbsp;</strong>{{name}}</p>
+						<p><strong>Director:&nbsp;</strong>{{director}}</p>
+						<p><strong>Actors:&nbsp;</strong>{{actors}}</p>
+						<p><strong>Date:&nbsp;</strong>{{date}}
+						<strong style="margin-left:20px;">Rating:&nbsp;</strong><span class="badge badge-warning">{{rating}}</span></p>
+						<p><strong>Genres:&nbsp;</strong>{{genres}}
+					</div>
+				</div>
+				<div class="row span5">
+					<p><strong>Plot:</strong></p>
+					<p>{{plotS}}</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success">Add to Watch List</button>
+				<button class="btn btn-primary">Add to Watched List</button>
+			</div>
+		</div>
 	{{/each}}
 </template>
 

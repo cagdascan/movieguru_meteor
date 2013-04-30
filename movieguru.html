@@ -62,9 +62,9 @@
 
 <template name="keyword">
 	{{#each item}}
-		<div sytle="float:left;" class="keyword">
-		<span sytle="float:left;" class="label">
-		{{keywords}}
+		<div class="keyword">
+		<span style="float:left;" class="label keyword {{selected}} {{hovered}}" id="{{_id}}">
+		{{keyword}}
 		</span>
 		</div>
 	{{/each}}
@@ -126,13 +126,13 @@
 
 <template name="watch_list">
 	{{#each list}}
-		{{watchlist}}
+	<img src="{{pLink}}" class="img-circle" style="width:36px; height:36px;" alt="{{name}}">
 	{{/each}}
 </template>
 
 <template name="watched_list">
 	{{#each list}}
-		{{watchedlist}}
+	<img src="{{pLink}}" class="img-circle" style="width:36px; height:36px;" alt="{{name}}">
 	{{/each}}
 </template>
 

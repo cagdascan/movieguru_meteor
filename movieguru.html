@@ -1,16 +1,15 @@
 <head>
   <title>movieguru</title>
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
   {{> main}}
 </body>
 
 <template name="main">
-	<div class="container">
-		<div class="navbar navbar-fixed-top" id="header">
+		<div class="navbar navbar-inverse navbar-fixed-top" id="header">    
 			{{> header}}
-		</div>
+    </div>	
 		<div class="container" id="content">
 		<div class="row">
 			<div class="span2">
@@ -30,18 +29,22 @@
 		</div>
 		<footer class="footer">
 			{{> footer}}
+		</footer>
 		</div>
-		</div>
-	</div>
+	
 </template>
 
 <template name="header">
 	<div class="navbar-inner">
-		<div class="nav">
-			<a class="brand span8 offset2" href="#">Movie Guru</a>
-			<div class="pull-right">
-			{{loginButtons}}
-			</div>
+		<div class="container">
+      <a class="brand pull-left" href="#">Movie Guru</a>
+      <ul class="nav pull-right">
+        <li><img src="/lib/Movie_Icon.jpg"></li>
+        <li><a href="#">
+				{{loginButtons}}
+          </a>
+        </li>
+			</ul>
 		</div>
 	</div>
 </template>

@@ -83,7 +83,19 @@
 </template>
 
 <template name="movies">
-  <h4><i class="icon-film" id="icon-film"></i>&nbsp;Movies</h4>
+  <h4>
+    <i class="icon-film" id="icon-film"></i>&nbsp;Movies
+    
+    <select class="pull-right span1">
+      <option>20</option>
+      <option>30</option>
+      <option>40</option>
+      <option>50</option>
+      <option>60</option>
+      
+    </select>
+      <i class="icon-filter pull-right" id="icon-filter"></i>
+  </h4>
 	<hr>
 	{{> movie}}
 </template>

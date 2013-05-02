@@ -8,9 +8,10 @@
 
 <template name="main">
 	<div class="container">
-		<div class="row" id="header">
+		<div class="navbar navbar-fixed-top" id="header">
 			{{> header}}
 		</div>
+		<div class="container" id="content">
 		<div class="row">
 			<div class="span2">
 				<div class="row" id="genres">
@@ -30,16 +31,23 @@
 		<footer class="footer">
 			{{> footer}}
 		</div>
+		</div>
 	</div>
 </template>
 
 <template name="header">
-	<h1 class="span10">Movie Guru</h1>
-	{{loginButtons}}
+	<div class="navbar-inner">
+		<div class="nav">
+			<a class="brand span8 offset2" href="#">Movie Guru</a>
+			<div class="pull-right">
+			{{loginButtons}}
+			</div>
+		</div>
+	</div>
 </template>
 
 <template name="genres">
-	<h4><a href="#" id="genre_header" data-toogle="tooltip" data-title="Select one or more genres" data-placement="right">Genres</a></h4>
+	<h4><a href="#" id="genre_header" data-toogle="tooltip" data-title="Select a  genre to display relevant keywords" data-placement="right">Genres</a></h4>
 	<hr>
 	{{> genre}}
 </template>
@@ -55,7 +63,7 @@
 </template>
 
 <template name="keywords">
-  <h4>Keywords</h4>
+<h4><a href="#" id="keyword_header" data-toogle="tooltip" data-title="Select a keyword to diplay movies" data-placement="top">Keywords</a><i class="icon-minus-sign pull-right"></i></a>&nbsp;<i class="icon-plus-sign pull-right"></i></h4>
 	<hr>
 	{{> keyword}}
 </template>
@@ -64,14 +72,14 @@
 	{{#each item}}
 		<div class="keyword">
 		<span style="float:left;" class="label keyword {{selected}} {{hovered}}" id="{{_id}}">
-		{{keyword}}
+		{{_id}}
 		</span>
 		</div>
 	{{/each}}
 </template>
 
 <template name="movies">
-  <h4>Movies</h4>
+  <h4><i class="icon-film"></i>&nbsp;Movies</h4>
 	<hr>
 	{{> movie}}
 </template>
@@ -94,7 +102,7 @@
 						<p><strong>Director:&nbsp;</strong>{{director}}</p>
 						<p><strong>Actors:&nbsp;</strong>{{actors}}</p>
 						<p><strong>Date:&nbsp;</strong>{{date}}
-						<strong style="margin-left:20px;">Rating:&nbsp;</strong><span class="badge badge-warning">{{rating}}</span></p>
+						<strong style="margin-left:20px;">Rating:&nbsp;</strong><span class="badge badge-warning">{{userRating}}</span></p>
 						<p><strong>Genres:&nbsp;</strong>{{genres}}
 					</div>
 				</div>

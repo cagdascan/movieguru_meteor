@@ -39,9 +39,8 @@
 		<div class="container">
       <a class="brand pull-left" href="#">Movie Guru</a>
       <ul class="nav pull-right">
-        <li><img src="/lib/Movie_Icon.jpg"></li>
         <li><a href="#">
-				{{loginButtons}}
+          <i class="icon-user icon-white"></i>&nbsp{{loginButtons}}
           </a>
         </li>
 			</ul>
@@ -50,7 +49,7 @@
 </template>
 
 <template name="genres">
-	<h4><a href="#" id="genre_header" data-toogle="tooltip" data-title="Select a  genre to display relevant keywords" data-placement="right">Genres</a></h4>
+	<h4><i class="icon-tag" id="tag"></i>&nbsp<a href="#" id="genre_header" data-toogle="tooltip" data-title="Select a  genre to display relevant keywords" data-placement="right">Genres</a></h4>
 	<hr>
 	{{> genre}}
 </template>
@@ -66,8 +65,10 @@
 </template>
 
 <template name="keywords">
-<h4><a href="#" id="keyword_header" data-toogle="tooltip" data-title="Select a keyword to diplay movies" data-placement="top">Keywords</a><i class="icon-minus-sign pull-right"></i></a>&nbsp;<i class="icon-plus-sign pull-right"></i></h4>
-	<hr>
+ 
+  <h4><i class="icon-tags" id="tags"></i>&nbsp;<a href="#" id="keyword_header" data-toogle="tooltip" data-title="Select a keyword to display movies" data-placement="top">Keywords</a><i class="icon-minus-sign pull-right"></i></a>&nbsp;<i class="icon-plus-sign pull-right"></i></h4>
+
+  <hr>
 	{{> keyword}}
 </template>
 
@@ -82,7 +83,7 @@
 </template>
 
 <template name="movies">
-  <h4><i class="icon-film"></i>&nbsp;Movies</h4>
+  <h4><i class="icon-film" id="icon-film"></i>&nbsp;Movies</h4>
 	<hr>
 	{{> movie}}
 </template>
@@ -124,12 +125,12 @@
 
 <template name="lists">
 	<div class="row" id="watch_list">
-		<h4>Watch List</h4>
+		<h4><i class="icon-eye-open" id="icon-eye-open"></i>&nbsp;Watch List</h4>
 		<hr>
 		{{> watch_list}}
 	</div>
 	<div class="row" id="watched_list">
-		<h4>Watched List</h4>
+    <h4><i class="icon-eye-close" id="icon-eye-close"></i>&nbsp;Watched List</h4>
 		<hr>
 		{{> watched_list}}
 	</div>

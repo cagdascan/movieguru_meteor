@@ -7,11 +7,12 @@
   font-family: 'Lobster';
   color: white;
 }
-
 .navbar a{
   color:white;
 }
-
+#tags, #tag, #icon-film, #icon-eye-open, #icon-eye-close {
+  margin-top:4px;
+}
 #content{
 	margin-top:80px;
 }
@@ -35,4 +36,3 @@
 #watch_list{
 	margin-bottom:50px;
 }
-

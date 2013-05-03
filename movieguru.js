@@ -27,7 +27,6 @@ Western = new Meteor.Collection("western");
 if (Meteor.isClient) {
 
 	var keyword_limit = 10;
-
 	Template.genres.events({
 		'mouseenter #genre_header' : function () {
 			$('#genre_header').tooltip('show');
@@ -97,6 +96,14 @@ if (Meteor.isClient) {
 		}
 	});
 
+	/*Template.movies.events({
+		'click select' : function () {
+			var movie_count = $('#movie_count').value;
+			Session.set("movie_limit", movie_count.value);
+			console.log(Session.get("movie_limit"));
+		}
+	});
+*/
 
 	Template.keyword.item= function () {
 		if (Session.get("genres") == "Action") 
@@ -191,9 +198,11 @@ if (Meteor.isClient) {
 			return Western.find({}, {limit:Session.get("keyword_limit")}).fetch();
 			}
 	 };
+  var movie_count = $('#movie_count').value;
+	console.log(movie_count);
 	
 	Template.movie.item = function () {
-		return Movies.find({genres:Session.get("genres"), keywords:Session.get("keyword")}, {limit:20}).fetch();
+		return Movies.find({genres:Session.get("genres"), keywords:Session.get("keyword")}, {sort:{userRating:-1}, limit:25}).fetch();
 	};
 
 	Template.movie.events({

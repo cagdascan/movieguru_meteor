@@ -38,7 +38,9 @@
 <template name="header">
 	<div class="navbar-inner">
 		<div class="container">
-      <a class="brand pull-left" href="#">Movie Guru</a>
+      <a class="brand pull-left" href="#">Movie Guru
+					<img src="icon.png" id="brand-icon">
+			</a>
       <ul class="nav pull-right">
         <li><a href="#">
           <i class="icon-user icon-white"></i>&nbsp{{loginButtons}}
@@ -86,16 +88,6 @@
 <template name="movies">
   <h4>
     <i class="icon-film" id="icon-film"></i>&nbsp;Movies
-    
-    <select class="pull-right span1">
-      <option>20</option>
-      <option>30</option>
-      <option>40</option>
-      <option>50</option>
-      <option>60</option>
-      
-    </select>
-      <i class="icon-filter pull-right" id="icon-filter"></i>
   </h4>
 	<hr>
 	{{> movie}}

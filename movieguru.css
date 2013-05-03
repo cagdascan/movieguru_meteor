@@ -1,6 +1,13 @@
 /* CSS declarations go here */
+body{
+	background-image: url('background.png');
+}
 #header{
 	margin-bottom:30px;
+}
+#brand-icon{
+	margin-top: -5px;
+	width:40px;
 }
 
 li, h4{

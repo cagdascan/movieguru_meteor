@@ -68,6 +68,14 @@ if (Meteor.isClient) {
 		}
 	});
 
+		Template.keywords.sessionexists = function () {
+			if (Session.get("genres") == undefined){
+				return '';
+			}
+			else
+				return "session exists";
+				};
+
 	Template.keywords.events({
 		'mouseenter #keyword_header' : function () {
 			$('#keyword_header').tooltip('show');
@@ -198,8 +206,14 @@ if (Meteor.isClient) {
 			return Western.find({}, {limit:Session.get("keyword_limit")}).fetch();
 			}
 	 };
-  var movie_count = $('#movie_count').value;
-	console.log(movie_count);
+
+		Template.movies.sessionexists = function () {
+			if ((Session.get("genres") == undefined) || (Session.get("keyword") == undefined)){
+				return '';
+			}
+			else
+				return "session exists";
+		};
 	
 	Template.movie.item = function () {
 		return Movies.find({genres:Session.get("genres"), keywords:Session.get("keyword")}, {sort:{userRating:-1}, limit:25}).fetch();
@@ -209,13 +223,42 @@ if (Meteor.isClient) {
 		'click button.watch_list' : function () {
 			Session.set("name", this.name);
 			Session.set("pLink", this.pLink);
-			Lists.insert({"user":Meteor.userId(), "name":Session.get("name"), "pLink":Session.get("pLink"), "watchlist":true});
+			Session.set("_id", this._id);
+			Lists.insert({"user":Meteor.userId(), "_id":Session.get("_id"), "name":Session.get("name"), "pLink":Session.get("pLink"), "watchlist":true});
 		},
 		'click button.watched_list' : function () {
 			Session.set("name", this.name);
 			Session.set("pLink", this.pLink);
-			Lists.insert({"user":Meteor.userId(), "name":Session.get("name"), "pLink":Session.get("pLink"), "watchedlist":true});
+			Session.set("_id", this._id);
+			Lists.insert({"user":Meteor.userId(), "_id":Session.get("_id"), "name":Session.get("name"), "pLink":Session.get("pLink"), "watchedlist":true});
 		}
+	});
+
+		Template.lists.sessionexists = function () {
+			if (Meteor.userId() == undefined){
+				return '';
+			}
+			else
+				return "session exists";
+		};
+	Template.watch_list.events({
+		'mouseenter .img-circle' : function () {
+			$('#'+this._id).tooltip('show');
+			},
+		'dblclick .img-circle' : function (e) {
+			e.preventDefault();
+			Lists.remove(this._id);
+			}
+	});
+
+	Template.watched_list.events({
+		'mouseenter .img-circle' : function () {
+			$('#'+this._id).tooltip('show');
+			},
+		'dblclick .img-circle' : function (e) {
+			e.preventDefault();
+			Lists.remove(this._id);
+			}
 	});
 
 	Template.watch_list.list= function () {
@@ -254,8 +297,6 @@ if (Meteor.isServer) {
 				"Mystery",
 				"Animation",
 				"Western",
-				"Short",
-				"Adult"
 			];
 			for (var i=0; i<genres.length; i++)
 				Genres.insert({genre: genres[i]});

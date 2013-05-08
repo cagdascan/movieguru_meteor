@@ -22,7 +22,11 @@ li, h4{
   color:white;
 }
 #tags, #tag, #icon-film, #icon-eye-open, #icon-eye-close {
-  margin-top:4px;
+  margin-top:3px;
+}
+.img-circle{
+	margin-bottom:8px;
+	margin-right:8px;
 }
 #content{
 	margin-top:80px;

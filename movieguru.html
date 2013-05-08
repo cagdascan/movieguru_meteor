@@ -72,7 +72,14 @@
   <h4><i class="icon-tags" id="tags"></i>&nbsp;<a href="#" id="keyword_header" data-toogle="tooltip" data-title="Select a keyword to display movies" data-placement="top">Keywords</a><i class="icon-minus-sign pull-right"></i></a>&nbsp;<i class="icon-plus-sign pull-right"></i></h4>
 
   <hr>
+	{{#if sessionexists}}
 	{{> keyword}}
+	{{else}}	
+		<div class="alert fade-in">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			Select genre to see the related keywords	
+		</div>
+	{{/if}}
 </template>
 
 <template name="keyword">
@@ -90,13 +97,20 @@
     <i class="icon-film" id="icon-film"></i>&nbsp;Movies
   </h4>
 	<hr>
+	{{#if sessionexists}}
 	{{> movie}}
+	{{else}}
+		<div class="alert fade-in">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			select <strong>genre</strong> and <strong>keyword</strong> to see movie recommendations
+		</div>
+	{{/if}}
 </template>
 
 <template name="movie">
 	{{#each item}}
 		<a href="#myModal{{_id}}" data-toggle="modal" class="movie_item">
-			<img src="{{pLink}}" class="img-polaroid"  style="width:96px; height:96px;">
+			<img src="posters/{{_id}}_poster.jpg" class="img-polaroid"  style="width:96px; height:96px;">
 		</a>
 		<div id="myModal{{_id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-header">
@@ -105,7 +119,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row span5">
-					<img src="{{pLink}}" class="img-rounded span2" style="margin-left:auto; margin-right:auto; margin-bottom:20px;">
+					<img src="posters/{{_id}}_poster.jpg" class="img-rounded span2" style="margin-left:auto; margin-right:auto; margin-bottom:20px;">
 					<div class="span3">
 						<p><strong>Title:&nbsp;</strong>{{name}}</p>
 						<p><strong>Director:&nbsp;</strong>{{director}}</p>
@@ -132,24 +146,38 @@
 	<div class="row" id="watch_list">
 		<h4><i class="icon-eye-open" id="icon-eye-open"></i>&nbsp;Watch List</h4>
 		<hr>
+		{{#if sessionexists}}
 		{{> watch_list}}
+		{{else}}
+		<div class="alert fade-in">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			Sign-in to see your watch-list
+		</div>
+	{{/if}}
 	</div>
 	<div class="row" id="watched_list">
     <h4><i class="icon-eye-close" id="icon-eye-close"></i>&nbsp;Watched List</h4>
 		<hr>
+		{{#if sessionexists}}
 		{{> watched_list}}
+		{{else}}
+		<div class="alert fade-in">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			Sign-in to see your watched-list
+		</div>
+		{{/if}}
 	</div>
 </template>
 
 <template name="watch_list">
 	{{#each list}}
-	<img src="{{pLink}}" class="img-circle" style="width:36px; height:36px;" alt="{{name}}">
+	<a href="#" id="{{_id}}" data-toogle="tooltip" data-title="{{name}} -- (double click to remove item)" data-placement="top"><img src="posters/{{_id}}_poster.jpg" class="img-circle" style="width:48px; height:48px;"></a>
 	{{/each}}
 </template>
 
 <template name="watched_list">
 	{{#each list}}
-	<img src="{{pLink}}" class="img-circle" style="width:36px; height:36px;" alt="{{name}}">
+	<a href="#" id="{{_id}}" data-toogle="tooltip" data-title="{{name}}" data-placement="top"><img src="posters/{{_id}}_poster.jpg" class="img-circle" style="width:48px; height:48px;"></a>
 	{{/each}}
 </template>
 
